@@ -73,3 +73,5 @@ group :test do
   gem "webdrivers"
   gem 'shoulda-matchers', '~> 5.0'
 end
+
+gem "pg", "~> 1.4"
