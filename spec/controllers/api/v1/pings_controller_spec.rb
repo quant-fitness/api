@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "rails_helper"
+require 'rails_helper'
 
 module Api
   module V1
     describe PingsController, type: :controller do
-      describe "#show" do
+      describe '#show' do
         before { get :show }
 
         it { should respond_with :ok }
@@ -13,4 +13,3 @@ module Api
     end
   end
 end
-
