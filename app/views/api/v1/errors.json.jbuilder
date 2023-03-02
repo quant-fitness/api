@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+json.status 422
 json.errors errors do |error|
   json.title error.detail[:error]
   json.detail error.full_message
