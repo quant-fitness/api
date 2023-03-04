@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       resource :ping, only: [:show]
 
       namespace :administration do
-        resources :users, only: [:create]
+        resources :users, only: %i[create destroy]
       end
     end
   end

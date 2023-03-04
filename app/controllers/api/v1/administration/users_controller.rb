@@ -17,6 +17,18 @@ module Api
           end
         end
 
+        def destroy
+          @user = User.find_by_id(params[:id])
+
+          if @user.nil?
+            render 'api/v1/not_found_error', status: :not_found,
+                                             locals: { source_pointer_prefix: 'user' }
+          else
+            @user.destroy
+            render :destroy
+          end
+        end
+
         def create_params
           params.require(:user)
                 .permit(:email_address)
