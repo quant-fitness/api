@@ -6,6 +6,10 @@ module Api
       class UsersController < ApplicationController
         skip_before_action :verify_authenticity_token
 
+        def index
+          @users = User.page params[:page]
+        end
+
         def create
           @user = User.new(create_params)
 

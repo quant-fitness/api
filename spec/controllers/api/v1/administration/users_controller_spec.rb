@@ -33,6 +33,12 @@ module Api
           end
         end
 
+        describe '#index' do
+          before { get :index, format: 'json' }
+          it { should respond_with :ok }
+          it { should render_template 'api/v1/administration/users/index' }
+        end
+
         describe '#create' do
           let(:valid_attributes) { FactoryBot.attributes_for(:user) }
 
