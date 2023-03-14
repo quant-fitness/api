@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_12_180424) do
   enable_extension "plpgsql"
 
   create_table "oauth_access_grants", force: :cascade do |t|
-    t.bigint "resource_owner_id", null: false
+    t.uuid "resource_owner_id", null: false
     t.bigint "application_id", null: false
     t.string "token", null: false
     t.integer "expires_in", null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_12_180424) do
   end
 
   create_table "oauth_access_tokens", force: :cascade do |t|
-    t.bigint "resource_owner_id"
+    t.uuid "resource_owner_id"
     t.bigint "application_id", null: false
     t.string "token", null: false
     t.string "refresh_token"
@@ -73,5 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_12_180424) do
   end
 
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
+  add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
+  add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
 end
