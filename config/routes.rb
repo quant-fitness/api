@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :mes
+      resources :me
       resource :ping, only: [:show]
 
       namespace :administration do
