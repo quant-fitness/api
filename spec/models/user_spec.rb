@@ -8,6 +8,11 @@ RSpec.describe User, type: :model do
     expect(user).to_not be_valid
   end
 
+  it 'is invalid without a password' do
+    user = User.new(valid_attributes.merge(password: nil))
+    expect(user).to_not be_valid
+  end
+
   it 'is invalid with an invalid email' do
     user = User.new(valid_attributes.merge(email_address: 'invalidemail'))
     expect(user).to_not be_valid

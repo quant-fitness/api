@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :users
+  use_doorkeeper
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :me
       resource :ping, only: [:show]
 
       namespace :administration do

@@ -11,6 +11,7 @@ module Api
         end
 
         def create
+          password = params[:password]
           @user = User.new(create_params)
 
           if @user.save
@@ -35,7 +36,7 @@ module Api
 
         def create_params
           params.require(:user)
-                .permit(:email_address)
+                .permit(:email_address, :password)
         end
       end
     end
